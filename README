@@ -2,11 +2,14 @@
 
 A very basic url shortener I wrote to try out redis.
 
+
+
 == Installation
 
-0. gem install redis
-1. Clone this repro
-2. Rnstall and start Redis
+1. gem install redis
+2. Install Redis 
+3. git clone git://github.com/toto/redis-shortener.git
+4. Start the Rails App
 
 == API
 
