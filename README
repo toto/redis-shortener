@@ -1,0 +1,26 @@
+== Redis based Url Shortener
+
+A very basic url shortener I wrote to try out redis.
+
+== Installation
+
+0. gem install redis
+1. Clone this repro
+2. Rnstall and start Redis
+
+== API
+
+1. Create 
+
+  curl http://localhost:3000/shorten.json -d 'longUrl=http://github.com'
+  
+2. Resolve
+2a. Via Api
+
+  curl http://localhost:3000/expand/ggtEjI.json
+
+2b. For the rest of us
+
+  curl http://localhost:3000/ggtEjI
+  
+
