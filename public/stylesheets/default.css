@@ -1,0 +1,32 @@
+body {
+  font: normal normal normal 1.5em Arial, sans-serif;
+  
+}
+
+.short_url_form {
+  width: 80%;
+  margin: auto;
+  margin-top: 20px;  
+  text-align: center;
+  background-color: #E9E9E9;
+  padding: 15px;
+  -webkit-border-radius: 15px;
+  border: 1px solid #ccc;
+}
+
+.short_url_form input {
+    font-size:  14pt;
+    font-weight: bold;
+}
+.short_url_form button {
+  font-size: 14pt;
+  font-weight: bold;
+  width: 140px;
+  height: 40px;
+  display: inline-block;
+}
+
+
+.short_url_form #long_url_field {
+  width: 90%;
+}

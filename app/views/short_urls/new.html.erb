@@ -1,0 +1,14 @@
+<%- form_remote_tag :url => short_urls_path(:format => :js), 
+                    :method => :post,
+                    :html => {:class => 'short_url_form'} do -%>
+  <h1>Shorten a URL</h1>
+  <p>
+    <%= text_field_tag :longUrl, '', :id => 'long_url_field' %>
+  </p>
+  <p>
+    <button>
+      Create
+    </button>
+
+  </p>
+<%- end -%>

@@ -1,6 +1,6 @@
 class ShortUrlsController < ApplicationController
   skip_before_filter :verify_authenticity_token
-  
+  layout 'default'
   def show
     @url = ShortUrl.find_by_id(params[:id])
     
@@ -20,7 +20,10 @@ class ShortUrlsController < ApplicationController
     @short_url.save if @short_url.new_record?
       
     respond_to do |format|
-      format.json {render :json => @short_url}
+      format.json {render :json => @short_url }
+        format.js { render :js => "$('long_url_field').value = '#{@short_url.shortUrl}';" }
+        format.html        
+
     end
   end
 end

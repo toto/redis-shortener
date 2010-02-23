@@ -6,12 +6,12 @@ ActionController::Routing::Routes.draw do |map|
                             :method => :get, 
                             :id => /[a-zA-Z0-9]{6,6}/,
                             :format => 'json'
-  map.expand '/expand/:id.:format', :controller => :short_urls, 
+  map.connect '/expand/:id.:format', :controller => :short_urls, 
                                     :action => :show, 
                                     :method => :get, 
                                     :id => /[a-zA-Z0-9]{6,6}/
   map.shorten '/shorten', :controller => :short_urls, :action => :create
-  map.shorten '/shorten.:format', :controller => :short_urls, :action => :create
+  map.connect '/shorten.:format', :controller => :short_urls, :action => :create
   
   # The priority is based upon order of creation: first created -> highest priority.
 
@@ -45,7 +45,7 @@ ActionController::Routing::Routes.draw do |map|
   #   end
 
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
-  # map.root :controller => "welcome"
+
 
   # See how all your routes lay out with "rake routes"
 
@@ -53,7 +53,7 @@ ActionController::Routing::Routes.draw do |map|
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing or commenting them out if you're using named routes and resources.
   map.connect ':id', :id => /[a-zA-Z0-9]{1,6}/, :controller => :redirect, :action => :show
-  
+  map.root :controller => :short_urls, :action => :new  
   #map.connect ':controller/:action/:id'
   #map.connect ':controller/:action/:id.:format'
 end

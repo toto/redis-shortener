@@ -7,7 +7,7 @@ class ShortUrl
   MAX_NUM_OF_URLS = BASE.size**URL_LENGTH
   
   attr_reader :url, :id, :new_record
-  cattr_accessor :base_url
+  
   
   alias_method :new_record?, :new_record
   
@@ -30,13 +30,17 @@ class ShortUrl
   
   
   def shortUrl
-    "#{BASE_URL}/#{self.id}"    
+    "#{ShortUrl.base_url}/#{self.id}"    
   end
   
   def to_json(*args)
     {'hash' => self.id,
      'longUrl'  => self.url,
      'shortUrl' => self.shortUrl}.to_json
+  end
+  
+  def self.base_url
+    ::BASE_URL
   end
   
   def self.key_for_url(url)
