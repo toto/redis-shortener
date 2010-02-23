@@ -11,4 +11,14 @@ class ShortUrlTest < ActiveSupport::TestCase
     assert_not_equal @id, ""
     assert_equal @url, ShortUrl.find_by_id(@id)
   end
+  
+  test "should not multiple short versions of the same url" do
+    @id = ShortUrl.new(@url).save
+    @id2 = ShortUrl.new(@url).save    
+    assert_equal(@id, @id2)
+  end
+  
+  def teardown
+    RedisConnection.flushdb
+  end
 end

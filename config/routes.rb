@@ -52,7 +52,7 @@ ActionController::Routing::Routes.draw do |map|
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing or commenting them out if you're using named routes and resources.
-  map.connect ':id', :id => /[a-zA-Z0-9]{6,6}/, :controller => :short_urls, :action => :show
+  map.connect ':id', :id => /[a-zA-Z0-9]{1,6}/, :controller => :redirect, :action => :show
   
   #map.connect ':controller/:action/:id'
   #map.connect ':controller/:action/:id.:format'

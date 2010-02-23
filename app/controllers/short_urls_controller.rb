@@ -7,7 +7,7 @@ class ShortUrlsController < ApplicationController
     if @url
       respond_to do |format|
         format.json { render :json => ShortUrl.new(@url).to_json }
-        format.html { redirect_to @url, :status => :moved_permanently }        
+        format.text { render @url }        
       end
     else
       render :status => :not_found, :nothing => true

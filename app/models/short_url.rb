@@ -21,8 +21,6 @@ class ShortUrl
   end
   
   def save
-    Rails.logger.debug "Storing #{ShortUrl.key_for_url(@url)} = #{@id}"
-    Rails.logger.debug "Storing #{ShortUrl.key_for_id(@id)} = #{@url}"    
     ShortUrl.store[ShortUrl.key_for_url(@url)] = @id
     ShortUrl.store[ShortUrl.key_for_id(@id)] = @url
     @new_record = false
@@ -36,7 +34,6 @@ class ShortUrl
   end
   
   def to_json(*args)
-#    raise args.inspect
     {'hash' => self.id,
      'longUrl'  => self.url,
      'shortUrl' => self.shortUrl}.to_json
@@ -66,6 +63,6 @@ class ShortUrl
   end
   
   def self.store
-    @redis_store ||= Redis.new
+    ::RedisConnection
   end
 end

@@ -39,3 +39,8 @@ Rails::Initializer.run do |config|
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
 end
+
+# Setup a gobal redis connection
+DatabaseConfig = YAML::load_file(Rails.root.join('config', 'database.yml')).symbolize_keys
+config_hash = {:logger => Rails.logger}.merge(DatabaseConfig[Rails.env.to_sym])
+RedisConnection = Redis.new(config_hash)
